@@ -1,0 +1,24 @@
+<mapper namespace="com.austin.dao.IUserDao">
+
+    <!--sql的唯一标识：namespace.id来组成:statementId -->
+    <select id="findAll" resultType="com.austin.pojo.User" >
+        select * from user
+    </select>
+
+    <select id="findByCondition" resultType="com.austin.pojo.User" parameterType="com.austin.pojo.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+
+    <insert id="addUser" parameterType="com.austin.pojo.User">
+        insert into user values(#{id},#{username})
+    </insert>
+
+    <update id="updateUser" parameterType="com.austin.pojo.User">
+        update user set username=#{username} where id=#{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="com.austin.pojo.User">
+        delete from user where id = #{id}
+    </delete>
+
+</mapper>
